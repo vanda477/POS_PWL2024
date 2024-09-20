@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Data Pengguna</title>
+        <title>Data User</title>
     </head>
     <body>
-        <h1>Data Pengguna</h1> 
+        <h1>Data User</h1> 
         <table border="1" cellpadding="2" cellspacing="0">
-            <tr>
+            {{-- <tr> --}}
                 {{-- <th>ID</th>
                 <th>Nama Pengguna</th>
                 <th>Nama</th>
@@ -19,7 +19,7 @@
                 <td>{{ $d->nama }} </td>
                 <td>{{ $d->level_id }} </td> --}}
 
-                <th>ID</th>
+                {{-- <th>ID</th>
                 <th>Nama Pengguna</th>
                 <th>Nama</th>
                 <th>ID Level Pengguna</th>
@@ -28,7 +28,13 @@
                 <td>{{ $data->user_id}} </td>
                 <td>{{ $data->username }} </td>
                 <td>{{ $data->nama }} </td>
-                <td>{{ $data->level_id }} </td>
+                <td>{{ $data->level_id }} </td> --}}
+            {{-- </tr> --}}
+            <tr>
+                <th>Jumlah Pengguna</th>
+            </tr>
+            <tr>
+                <td>{{ $userCount }}</td> <!-- Menampilkan jumlah pengguna -->
             </tr>
         </table>
     </body>
