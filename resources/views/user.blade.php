@@ -7,7 +7,7 @@
         <h1>Data Pengguna</h1> 
         <table border="1" cellpadding="2" cellspacing="0">
             <tr>
-                <th>ID</th>
+                {{-- <th>ID</th>
                 <th>Nama Pengguna</th>
                 <th>Nama</th>
                 <th>ID Level Pengguna</th>
@@ -17,9 +17,19 @@
                 <td>{{ $d->user_id }} </td>
                 <td>{{ $d->username }} </td>
                 <td>{{ $d->nama }} </td>
-                <td>{{ $d->level_id }} </td>
+                <td>{{ $d->level_id }} </td> --}}
+
+                <th>ID</th>
+                <th>Nama Pengguna</th>
+                <th>Nama</th>
+                <th>ID Level Pengguna</th>
             </tr>
-            @endforeach
+            <tr>
+                <td>{{ $data->user_id}} </td>
+                <td>{{ $data->username }} </td>
+                <td>{{ $data->nama }} </td>
+                <td>{{ $data->level_id }} </td>
+            </tr>
         </table>
     </body>
 </html>
