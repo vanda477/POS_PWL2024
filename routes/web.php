@@ -37,6 +37,8 @@ Route::group(['prefix' => 'user'], function() {
     Route::put('/{id}', [UserController::class, 'show']);     // menyimpan perubahan data user
     Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
     Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
+    Route::get('/{id}/edit_ajax', [UserController::class, 'edit_ajax']); //form edit
+    Route::put('/{id}/update_ajax', [UserController::class, 'update_ajax']); // simpan perubahan data
     Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 //route level
