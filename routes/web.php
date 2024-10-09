@@ -32,6 +32,9 @@ Route::group(['prefix' => 'user'], function() {
     Route::post('/list', [UserController::class, 'list']);      // menampilkan data user dalam json untuk datables
     Route::get('/create', [UserController::class, 'create']);   // menampilkan halaman form tambah user
     Route::post('/', [UserController::class, 'store']);         // menyimpan data user baru
+    Route::get('/create_ajax', [UserController::class, 'create_ajax']); //Menampilkan halaman form tambah
+    Route::post('/ajax', [UserController::class, 'store_ajax']);  // Menyimpan data user baru ajax
+    Route::put('/{id}', [UserController::class, 'show']);     // menyimpan perubahan data user
     Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
     Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
     Route::delete('/{id}', [UserController::class, 'destroy']);
@@ -58,7 +61,7 @@ Route::delete('/{id}',[LevelController::class,'destroy']);
 // Route::put('/{id}',[KategorisController::class,'update']);
 // Route::delete('/{id}',[KategorisController::class,'destroy']);
 // });
-// //route barang
+// // //route barang
 // Route::group(['prefix' =>'barang'],function(){
 // Route::get('/',[BarangController::class,'index']);
 // Route::post('/list',[BarangController::class, 'list']);
@@ -69,7 +72,7 @@ Route::delete('/{id}',[LevelController::class,'destroy']);
 // Route::put('/{id}',[BarangController::class,'update']);
 // Route::delete('/{id}',[BarangController::class,'destroy']);
 // });
-// //route supplier
+// // //route supplier
 // Route::group(['prefix' =>'supplier'],function(){
 // Route::get('/',[SupplierController::class,'index']);
 // Route::post('/list',[SupplierController::class, 'list']);
