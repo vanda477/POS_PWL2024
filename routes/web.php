@@ -28,7 +28,8 @@ Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id}, maka harud
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
-Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
 
 Route::middleware(['auth'])->group(function(){
         Route::get('/', [WelcomeController::class, 'index']);
@@ -94,5 +95,7 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/{id}',[SupplierController::class,'update']);
     Route::delete('/{id}',[SupplierController::class,'destroy']);
     });
+
+       
 
 });
