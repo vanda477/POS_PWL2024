@@ -50,7 +50,9 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/{id}/update_ajax', [UserController::class, 'update_ajax']);    //menyimpan perubahan data user AJAX
         Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);   //menampilkan form confirm hapus data user AJAX
         Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); //menghapus data user AJAX
-        Route::delete('/{id}', [UserController::class, 'destroy']);                 //menghapus data user
+        Route::delete('/{id}', [UserController::class, 'destroy']);                //menghapus data user
+        Route::get('/import', [UserController::class, 'import']); //uppload excel
+        Route::post('/import_ajax', [UserController::class, 'import_ajax']); //ajax import excel
     });
     
     //Semua route di grup ini harus punya role ADM (Administrator)
@@ -63,6 +65,10 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']);       //menyimpan perubahan data level AJAX
         Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);      //menampilkan form confirm hapus data level AJAX
         Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);    //menghapus data level AJAX
+        Route::get('/import', [LevelController::class, 'import']); //uppload excel
+        Route::post('/import_ajax', [LevelController::class, 'import_ajax']); //ajax import excel
+        Route::get('/export_excel', [LevelController::class, 'export_excel']); //export excel
+        Route::get('/export_pdf', [LevelController::class, 'export_pdf']); //export pdf
     });
     
     //Semua route di grup ini harus punya role ADM (Administrator) dan MNG (Manager)
@@ -75,6 +81,10 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/{id}/update_ajax', [KategoriController::class, 'update_ajax']);        //menyimpan perubahan data kategori AJAX
         Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']);       //menampilkan form confirm hapus data kategori AJAX
         Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);     //menghapus data kategori AJAX
+        Route::get('/import', [KategoriController::class, 'import']); //uppload excel
+        Route::post('/import_ajax', [KategoriController::class, 'import_ajax']); //ajax import excel
+        Route::get('/export_excel', [KategoriController::class, 'export_excel']); //export excel
+        Route::get('/export_pdf', [KategoriController::class, 'export_pdf']); 
     });
     
     //Semua route di grup ini harus punya role ADM (Administrator)
@@ -87,6 +97,10 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/{id}/update_ajax', [SupplierController::class, 'update_ajax']);        //menyimpan perubahan data supplier AJAX
         Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);       //menampilkan form confirm hapus data supplier AJAX
         Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);     //menghapus data supplier AJAX
+        Route::get('/import', [SupplierController::class, 'import']); //uppload excel
+        Route::post('/import_ajax', [SupplierController::class, 'import_ajax']); //ajax import excel
+        Route::get('/export_excel', [SupplierController::class, 'export_excel']); //export excel
+        Route::get('/export_pdf', [SupplierController::class, 'export_pdf']);
     });
     //Semua route di grup ini harus punya role ADM (Administrator) dan MNG (Manager)
     Route::group(['prefix' => 'barang', 'middleware'=> 'authorize:ADM,MNG'], function(){
