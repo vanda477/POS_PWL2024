@@ -88,7 +88,7 @@
                         searchable: true
                     },
                     {
-                        data: "action", // Kolom aksi (Edit, Hapus)
+                        data: "aksi", // Kolom aksi (Edit, Hapus)
                         orderable: false,
                         searchable: false
                     }
