@@ -9,15 +9,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PenjualanDetailModel extends Model
 {
     use HasFactory;
-    protected $table = 't_penjualan_detail'; // Mendefinisikan nama tabel
-    protected $primaryKey = 'detail_id'; // Mendefinisikan primary key
-    protected $fillable = ['penjualan_id', 'barang_id', 'harga', 'jumlah'];
 
-    // Relasi ke PenjualanModel (belongsTo)
-    public function Penjualan(): BelongsTo {
-        return $this->belongsTo(PenjualanModel::class, 'penjualan_id','penjualan_id');
+    protected $table = 't_penjualan_detail';
+    protected $primaryKey = 'detail_id';
+
+    protected $fillable = ['penjualan_id', 'barang_id', 'harga', 'jumlah', 'created_at', 'updated_at'];
+
+    public function penjualan() : BelongsTo {
+        return $this->belongsTo(PenjualanModel::class, 'penjualan_id', 'penjualan_id');
     }
-    public function Barang(): BelongsTo {
+
+    public function barang() : BelongsTo {
         return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');
     }
 }

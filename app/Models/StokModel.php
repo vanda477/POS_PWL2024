@@ -10,17 +10,21 @@ class StokModel extends Model
 {
     use HasFactory;
 
-    protected $table ='t_stok'; // Mendefinisikan nama tabel
-    protected $primaryKey ='stok_id'; // Mendefinisikan primary key
-    protected $fillable = ['barang_id', 'user_id', 'stok_tanggal', 'stok_jumlah'];
+    protected $table = 't_stok';
+    protected $primaryKey = 'stok_id';
 
-    public function Users(): BelongsTo {
-        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    protected $fillable = ['supplier_id', 'barang_id', 'user_id', 'stok_tanggal', 'stok_jumlah', 'created_at', 'updated_at'];
+
+    public function supplier(): BelongsTo {
+        return $this->belongsTo(SupplierModel::class, 'supplier_id', 'supplier_id');
     }
-    public function Barang(): BelongsTo {
+
+    public function barang() : BelongsTo {
         return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');
     }
-    public function Supplier(): BelongsTo {
-        return $this->belongsTo(SupplierModel::class,'supplier_id','supplier_id'); // Mendefinisikan foreign key
+
+    public function user() : BelongsTo {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
+
 }

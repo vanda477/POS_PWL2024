@@ -83,6 +83,39 @@
 
 <!-- SweetAlert2 -->
 <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<style>
+  /* CSS yang telah dimodifikasi */
+  .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #343a40;
+      overflow-y: auto;
+      width: 250px;
+  }
+
+  .nav-link {
+      color: white;
+  }
+
+  .nav-link.active {
+      background-color: #007bff;
+  }
+
+  .user-panel {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px;
+  }
+
+  .content-wrapper {
+      margin-left: 250px;
+      padding: 20px;
+  }
+  
+</style>
+
+
 
 <!-- AdminLTE App -->
 <script src={{ asset('adminlte/dist/js/adminlte.min.js')}}></script>
