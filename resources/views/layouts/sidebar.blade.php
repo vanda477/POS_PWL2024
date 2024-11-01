@@ -3,7 +3,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
         <!-- Menampilkan foto profil -->
-        <img id="sidebar-profile-img" src="{{ asset(Auth::user()->foto ?? 'adminlte/dist/img/default-profile.png') }}" class="img-circle elevation-2" alt="User Image">
+        <img id="sidebar-profile-img" src="{{ asset(is_string(Auth::user()->foto) ? Auth::user()->foto : 'adminlte/dist/img/default-profile.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a href="{{ url('/profile') }}" class="d-block">{{ Auth::user()->nama }}</a>

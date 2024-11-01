@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\UserModel;
+use App\Models\LevelModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
             ]
         ];
         $activeMenu = 'profile';
-        return view('profile', compact('user'), [
+        return view('profile.index', compact('user'), [
             'breadcrumb' => $breadcrumb,
             'activeMenu' => $activeMenu
         ]);
@@ -57,4 +58,54 @@ class ProfileController extends Controller
         $user->save();
         return back()->with('status', 'Profile berhasil diperbarui');
     }
+
+    public function edit_ajax($id)
+    {
+        $user = UserModel::find($id);
+        if (!$user) {
+            return response()->json(['status' => false, 'message' => 'User not found!']);
+        }
+
+        // Load levels for the select box
+        $levels = LevelModel::all();
+        return view('profile.edit_ajax', compact('user', 'levels'));
+    }
+
+    public function update_ajax(Request $request, $id)
+    {
+        $user = UserModel::find($id);
+        if (!$user) {
+            return response()->json(['status' => false, 'message' => 'User not found!']);
+        }
+
+        // Validasi input
+        $request->validate([
+            'username' => 'required|string|min:3|unique:m_user,username,' . $id . ',user_id',
+            'nama' => 'required|string|max:100',
+            'password' => 'nullable|min:5',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // Update data pengguna
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+
+        // Update password jika ada
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        // Update foto jika ada
+        if ($request->hasFile('foto')) {
+            $filename = time() . '.' . $request->foto->extension();
+            $request->foto->move(public_path('adminlte/dist/img/'), $filename);
+            $user->foto = 'adminlte/dist/img/' . $filename;
+        }
+
+        $user->level_id = $request->level_id;
+        $user->save();
+
+        return response()->json(['status' => true, 'message' => 'Profil berhasil diperbarui!']);
+    }
+
 }

@@ -8,12 +8,7 @@
                     <div class="d-flex flex-column align-items-center text-center p-3">
                         <!-- Menampilkan foto profil -->
                         <img class="rounded mt-3 mb-2" width="250px" src="{{ asset($user->foto ? $user->foto : 'adminlte/dist/img/default-profile.png') }}?{{ time() }}" alt="Foto Profil">
-
                     </div>
-                    <!-- Hapus tombol Edit Foto -->
-                    <!-- <div onclick="modalAction('{{ url('/profile/' . session('user_id') . '/edit_foto') }}')" class="mt-4 text-center">
-                        <button class="btn btn-primary profile-button" type="button">Edit Foto</button>
-                    </div> -->
                 </div>
             </div>
             <div class="col-md-8 border-right">
@@ -21,12 +16,6 @@
                     <div class="d-flex align-items-center">
                         <h4 class="text-right">Pengaturan Profil</h4>
                     </div>
-                         @if($user && $user->foto)
-                            <img class="rounded mt-3 mb-2" width="250px" src="{{ asset($user->foto) }}?{{ time() }}" alt="Foto Profil">
-                        @else
-                            <img class="rounded mt-3 mb-2" width="250px" src="{{ asset('adminlte/dist/img/default-profile.png') }}" alt="Foto Profil">
-                        @endif
-
                     <div class="row mt-3">
                         <!-- Menampilkan detail profil pengguna -->
                         <table class="table table-bordered table-striped table-hover table-sm">
