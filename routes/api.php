@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/register1', [RegisterController::class, 'register1'])->name('register1'); // Dengan asumsi metode berbeda untuk 'register1'
+Route::post('/register1', RegisterController::class)->name('register1');
 Route::post('login', LoginController::class);
 Route::middleware('auth:API')->get('/user', function (Request $request) {
     return $request->user();

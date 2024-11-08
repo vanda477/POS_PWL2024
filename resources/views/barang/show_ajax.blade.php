@@ -25,13 +25,23 @@
             </div>
             <div class="modal-body">
                 <table class="table table-sm table-bordered table-striped">
-                    <table class="table table-sm table-bordered table-striped">
-                        <tr><th class="test-right col-3">Kategori Barang : </th><td class="col-9">{{ $barang->kategori->kategori_nama }}</td></tr>
-                        <tr><th class="test-right col-3">Kode Barang : </th><td class="col-9">{{ $barang->barang_kode }}</td></tr>
-                        <tr><th class="test-right col-3">Nama Barang: </th><td class="col-9">{{ $barang->barang_nama }}</td></tr>
-                        <tr><th class="test-right col-3">Harga Beli : </th><td class="col-9">{{ $barang->harga_beli }}</td></tr>
-                        <tr><th class="test-right col-3">Harga Jual : </th><td class="col-9">{{ $barang->harga_jual }}</td></tr>
-                    </table>
+                    <tr><th class="text-right col-4">Kategori Barang :</th><td class="col-9">{{$barang->kategori->kategori_nama }}</td></tr>
+                    <tr><th class="text-right col-4">Kode :</th><td class="col-9">{{$barang->barang_kode }}</td></tr>
+                    <tr><th class="text-right col-4">Nama :</th><td class="col-9">{{ $barang->barang_nama }}</td></tr>
+                    <tr><th class="text-right col-4">Harga Beli :</th><td class="col-9">{{ $barang->harga_beli }}</td></tr>
+                    <tr><th class="text-right col-4">Harga Jual :</th><td class="col-9">{{ $barang->harga_jual }}</td></tr>
+                    <tr>
+                        <th class="text-right col-4">Barang Image :</th>
+                        <td class="col-9">
+                            @if($barang->image && filter_var($barang->image, FILTER_VALIDATE_URL))
+                                <img width="150px" src="{{ $barang->image }}" alt="Barang picture">
+                            @elseif($barang->image && file_exists(public_path('storage/' . $barang->image)))
+                                <img width="150px" src="{{ asset('storage/' . $barang->image) }}" alt="Barang picture">
+                            @else
+                                <span>Foto kosong</span>
+                            @endif
+                        </td>
+                    </tr>
                 </table>
             </div>
             <div class="modal-footer">

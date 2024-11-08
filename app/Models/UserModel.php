@@ -27,7 +27,7 @@ class UserModel extends Authenticatable implements JWTSubject
 
         protected $table = 'm_user';
         protected $primaryKey = 'user_id';
-        protected $fillable =['username', 'password', 'nama', 'level_id', 'create_at', 'update_at'];
+        protected $fillable =['username', 'password', 'nama', 'level_id', 'create_at', 'update_at', 'image'];
         protected $hidden = ['password']; //jangan di tampilkan saat select
         protected $casts = ['password' => 'hashed']; // casting password agar otomatis di hash
 
@@ -49,6 +49,12 @@ class UserModel extends Authenticatable implements JWTSubject
     public function getRole()
     {
         return $this->level->level_kode;
+    }
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
     }
 }
 
